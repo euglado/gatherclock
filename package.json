@@ -1,0 +1,30 @@
+{
+  "name": "gatherclock",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Preview and publish timezone-safe event cards in Discord.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "biome check src test scripts",
+    "test": "node --test dist/test/*.test.js",
+    "check": "npm run lint && npm run build && npm test && npm run security",
+    "security": "node scripts/security.mjs",
+    "setup": "node scripts/setup.mjs",
+    "register": "node --env-file-if-exists=.env dist/src/register.js",
+    "start": "node --env-file-if-exists=.env dist/src/main.js"
+  },
+  "dependencies": {
+    "@js-temporal/polyfill": "0.5.1",
+    "discord.js": "14.27.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@types/node": "24.19.2",
+    "typescript": "7.0.2"
+  }
+}
